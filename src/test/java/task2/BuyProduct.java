@@ -16,6 +16,7 @@ public class BuyProduct {
 
     private WebDriver driver;
 
+    private LoginPage loginPage;
     private AccountPage accountPage;
     private MainPage mainPage;
     private AllProductsPage allProductsPage;
@@ -34,7 +35,7 @@ public class BuyProduct {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://prod-kurs.coderslab.pl/index.php?controller=authentication&back=my-account");
 
-        LoginPage loginPage = new LoginPage(driver);
+        loginPage = new LoginPage(driver);
         loginPage.enterCredentials();
         loginPage.signIn();
     }
