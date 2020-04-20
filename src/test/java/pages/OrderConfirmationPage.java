@@ -8,25 +8,19 @@ import org.openqa.selenium.support.PageFactory;
 import java.io.File;
 import java.util.List;
 
-public class OrderConfirmationPage {
+public class OrderConfirmationPage extends HeaderPage{
 
     private WebDriver driver;
 
     private String totalValue;
 
-    @FindBy(className = "account")
-    private WebElement userButton;
-
     @FindBy(css = ".font-weight-bold")
     private WebElement totalPrice;
 
     public OrderConfirmationPage(WebDriver driver) {
+        super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
-    }
-
-    public void goToAccount() {
-        userButton.click();
     }
 
     public void saveTotalValue() {

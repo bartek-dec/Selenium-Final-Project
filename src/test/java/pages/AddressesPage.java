@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class AddressesPage {
+public class AddressesPage extends HeaderPage {
 
     private WebDriver driver;
 
@@ -21,10 +21,8 @@ public class AddressesPage {
     @FindBy(css = ".alert.alert-success")
     private WebElement alert;
 
-    @FindBy(css = ".logout.hidden-sm-down")
-    private WebElement signOutButton;
-
     public AddressesPage(WebDriver driver) {
+        super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -40,9 +38,5 @@ public class AddressesPage {
 
     public WebElement getAlert() {
         return alert;
-    }
-
-    public void signOut() {
-        signOutButton.click();
     }
 }

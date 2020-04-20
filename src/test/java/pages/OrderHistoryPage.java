@@ -5,12 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class OrderHistoryPage {
+public class OrderHistoryPage extends HeaderPage {
 
     private WebDriver driver;
-
-    @FindBy(css = ".logout.hidden-sm-down")
-    private WebElement signOutButton;
 
     @FindBy(css = "span.label.label-pill.bright")
     private WebElement status;
@@ -19,12 +16,9 @@ public class OrderHistoryPage {
     private WebElement totalPrice;
 
     public OrderHistoryPage(WebDriver driver) {
+        super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
-    }
-
-    public void signOut() {
-        signOutButton.click();
     }
 
     public String getStatus() {
