@@ -80,10 +80,13 @@ public class BuyProduct {
         productPage.addProductsToCart();
     }
 
+    @And("user goes to shopping card")
+    public void goToShoppingCart() {
+        productPage.proceedToCheckout();
+    }
+
     @And("user goes to checkout")
     public void goToCheckout() {
-        productPage.proceedToCheckout();
-
         shoppingCartPage = new ShoppingCartPage(driver);
         shoppingCartPage.proceedToCheckout();
     }

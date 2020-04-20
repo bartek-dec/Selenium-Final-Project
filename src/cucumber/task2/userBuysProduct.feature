@@ -7,6 +7,7 @@ Feature: User buys product
     And user chooses product size <size>
     And user chooses quantity <quantity> of products
     And user adds products to the basket
+    And user goes to shopping card
     And user goes to checkout
     And user confirms address
     And user chooses pick up method as pick up in store
