@@ -32,11 +32,44 @@ public class AddressesPage extends HeaderPage {
     }
 
     public void deleteRecentAddress() {
-        addresses.get(addresses.size() - 1)
-                .findElement(By.partialLinkText("Delete")).click();
+        getRecentAddress().findElement(By.partialLinkText("Delete")).click();
     }
 
     public WebElement getAlert() {
         return alert;
+    }
+
+    public boolean containAlias(String alias) {
+        WebElement aliasElement = getRecentAddress().findElement(By.tagName("h4"));
+        return aliasElement.getText().contains(alias);
+    }
+
+    public boolean containAddress(String address) {
+        WebElement addressElement = getRecentAddress().findElement(By.tagName("address"));
+        return addressElement.getText().contains(address);
+    }
+
+    public boolean containCity(String city) {
+        WebElement cityElement = getRecentAddress().findElement(By.tagName("address"));
+        return cityElement.getText().contains(city);
+    }
+
+    public boolean containPostCode(String postCode) {
+        WebElement postCodeElement = getRecentAddress().findElement(By.tagName("address"));
+        return postCodeElement.getText().contains(postCode);
+    }
+
+    public boolean containCountry(String country) {
+        WebElement countryElement = getRecentAddress().findElement(By.tagName("address"));
+        return countryElement.getText().contains(country);
+    }
+
+    public boolean containPhone(String phone) {
+        WebElement phoneElement = getRecentAddress().findElement(By.tagName("address"));
+        return phoneElement.getText().contains(phone);
+    }
+
+    private WebElement getRecentAddress() {
+        return addresses.get(addresses.size() - 1);
     }
 }

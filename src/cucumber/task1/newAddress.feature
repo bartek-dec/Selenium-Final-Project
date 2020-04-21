@@ -6,11 +6,14 @@ Feature: Logged in user adds new address and deletes it
     And user clicks Create new address
     And user provides <alias>, <address>, <city>, <postCode>, <country>, <phone> into the form
     And user saves data
-    And user deletes recent address
-    Then recent address has been removed
-    And user logs out
+    Then recent address contains alias <alias>
+    And recent address contains address <address>
+    And recent address contains city <city>
+    And recent address contains postCode <postCode>
+    And recent address contains country <country>
+    And recent address contains phone <phone>
     And user close browser
 
     Examples:
-    |alias|address  |city   |postCode  |country  |phone    |
-    |Janek|Address 3|Warsaw |98765     |17       |123456789|
+    |alias|address  |city   |postCode  |country        |phone    |
+    |Johny|Address 3|Gdansk |98765     |United Kingdom |880012390|

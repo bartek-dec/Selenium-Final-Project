@@ -54,7 +54,7 @@ public class NewAddressPage {
     }
 
     public void setCountryInput(String countryValue) {
-        new Select(countryInput).selectByValue(countryValue);
+        new Select(countryInput).selectByVisibleText(countryValue);
     }
 
     public void setPhoneInput(String phone) {

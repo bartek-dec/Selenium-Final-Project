@@ -71,23 +71,40 @@ public class AddNewAddress {
         newAddressPage.saveForm();
     }
 
-    @And("user deletes recent address")
-    public void deleteRecentAddress() {
-        addressesPage.deleteRecentAddress();
+    @Then("recent address contains alias (.*)")
+    public void checkAlias(String alias) {
+        Assert.assertTrue(addressesPage.containAlias(alias));
     }
 
-    @Then("recent address has been removed")
-    public void checkConfirmation() {
-        Assert.assertTrue(addressesPage.getAlert().isDisplayed());
+    @And("recent address contains address (.*)")
+    public void checkAddress(String address) {
+        Assert.assertTrue(addressesPage.containAddress(address));
     }
 
-    @And("user logs out")
-    public void logOut() {
-        addressesPage.signOut();
+    @And("recent address contains city (.*)")
+    public void checkCity(String city) {
+        Assert.assertTrue(addressesPage.containCity(city));
+    }
+
+    @And("recent address contains postCode (.*)")
+    public void checkPostCode(String postCode) {
+        Assert.assertTrue(addressesPage.containPostCode(postCode));
+    }
+
+    @And("recent address contains country (.*)")
+    public void checkCountry(String country) {
+        Assert.assertTrue(addressesPage.containCountry(country));
+    }
+
+    @And("recent address contains phone (.*)")
+    public void checkPhone(String phone) {
+        Assert.assertTrue(addressesPage.containPhone(phone));
     }
 
     @And("user close browser")
     public void tearDown() {
+        addressesPage.deleteRecentAddress();
+        addressesPage.signOut();
         driver.close();
     }
 }
