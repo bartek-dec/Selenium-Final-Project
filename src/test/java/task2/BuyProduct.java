@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.*;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class BuyProduct {
@@ -123,7 +124,7 @@ public class BuyProduct {
         orderConfirmationPage = new OrderConfirmationPage(driver);
         try {
             orderConfirmationPage.takeSnapShot();
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }

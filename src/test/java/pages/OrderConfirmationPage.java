@@ -6,9 +6,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
-public class OrderConfirmationPage extends HeaderPage{
+public class OrderConfirmationPage extends HeaderPage {
+
+    private static final String filePath = "src/snapShots/test.png";
 
     private WebDriver driver;
 
@@ -32,12 +35,12 @@ public class OrderConfirmationPage extends HeaderPage{
         return totalValue;
     }
 
-    public void takeSnapShot() throws Exception {
+    public void takeSnapShot() throws IOException {
         TakesScreenshot screenshot = (TakesScreenshot) driver;
 
         File srcFile = screenshot.getScreenshotAs(OutputType.FILE);
 
-        File destFile = new File("src/snapShots/test.png");
+        File destFile = new File(filePath);
 
         FileUtils.copyFile(srcFile, destFile);
     }
