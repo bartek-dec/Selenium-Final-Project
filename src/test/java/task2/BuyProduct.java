@@ -4,6 +4,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import dataProvider.ConfigFileReader;
 import org.junit.Assert;
 import org.openqa.selenium.InvalidArgumentException;
 import org.openqa.selenium.WebDriver;
@@ -26,15 +27,17 @@ public class BuyProduct {
     private OrderSummaryPage orderSummaryPage;
     private OrderConfirmationPage orderConfirmationPage;
     private OrderHistoryPage orderHistoryPage;
+    private ConfigFileReader configFileReader;
 
     @Given("user logged in to account")
     public void logInToAccount() {
-        System.setProperty("webdriver.chrome.driver",
-                "src/main/resources/drivers/chromedriver");
+        configFileReader = new ConfigFileReader();
+        System.setProperty(configFileReader.getSysPropertyName(),
+                configFileReader.getSysPropertyValue());
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://prod-kurs.coderslab.pl/index.php?controller=authentication&back=my-account");
+        driver.manage().timeouts().implicitlyWait(configFileReader.getImplicitlyWait(), TimeUnit.SECONDS);
+        driver.get(configFileReader.getUrl());
 
         loginPage = new LoginPage(driver);
         loginPage.enterCredentials();
