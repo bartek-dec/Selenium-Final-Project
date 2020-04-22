@@ -12,6 +12,7 @@ import pages.AccountPage;
 import pages.AddressesPage;
 import pages.LoginPage;
 import pages.NewAddressPage;
+import webDriverProvider.WebDriverManager;
 
 import java.util.concurrent.TimeUnit;
 
@@ -24,13 +25,17 @@ public class DeleteNewAddress {
     private AddressesPage addressesPage;
     private NewAddressPage newAddressPage;
     private ConfigFileReader configFileReader;
+    private WebDriverManager webDriverManager;
 
     @Given("user logged in to account having first address already defined")
     public void logInToAccount() {
+        webDriverManager = new WebDriverManager();
         configFileReader = new ConfigFileReader();
+
         System.setProperty(configFileReader.getSysPropertyName(),
                 configFileReader.getSysPropertyValue());
-        driver = new ChromeDriver();
+
+        driver = webDriverManager.getDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(configFileReader.getImplicitlyWait(), TimeUnit.SECONDS);
         driver.get(configFileReader.getUrl());

@@ -10,6 +10,7 @@ import org.openqa.selenium.InvalidArgumentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.*;
+import webDriverProvider.WebDriverManager;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -28,13 +29,17 @@ public class BuyProduct {
     private OrderConfirmationPage orderConfirmationPage;
     private OrderHistoryPage orderHistoryPage;
     private ConfigFileReader configFileReader;
+    private WebDriverManager webDriverManager;
 
     @Given("user logged in to account")
     public void logInToAccount() {
+        webDriverManager = new WebDriverManager();
         configFileReader = new ConfigFileReader();
+
         System.setProperty(configFileReader.getSysPropertyName(),
                 configFileReader.getSysPropertyValue());
-        driver = new ChromeDriver();
+
+        driver = webDriverManager.getDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(configFileReader.getImplicitlyWait(), TimeUnit.SECONDS);
         driver.get(configFileReader.getUrl());
