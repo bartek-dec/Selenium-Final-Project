@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class ProductPage {
 
     private WebDriver driver;
+    private WebDriverWait wait;
 
     @FindBy(css = ".discount.discount-percentage")
     private WebElement discount;
@@ -29,6 +30,7 @@ public class ProductPage {
 
     public ProductPage(WebDriver driver) {
         this.driver = driver;
+        wait = new WebDriverWait(driver, 5);
         PageFactory.initElements(driver, this);
     }
 
@@ -46,7 +48,7 @@ public class ProductPage {
     }
 
     public void addProductsToCart() {
-        addToCartButton.click();
+        getAddToCartButtonn().click();
     }
 
     public void proceedToCheckout() {
@@ -54,8 +56,13 @@ public class ProductPage {
     }
 
     private WebElement getProceedButton() {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
         WebElement button = wait.until(ExpectedConditions.elementToBeClickable(proceedButton));
+
+        return button;
+    }
+
+    private WebElement getAddToCartButtonn() {
+        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(addToCartButton));
 
         return button;
     }
