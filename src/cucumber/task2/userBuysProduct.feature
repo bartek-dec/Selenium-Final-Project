@@ -23,7 +23,7 @@ Feature: User buys product
 
     Examples:
     |productName                |size|quantity|
-    |Hummingbird Printed Sweater|M   |5       |
-    |Hummingbird Printed Sweater|S   |3       |
-    |Hummingbird Printed Sweater|L   |6       |
-    |Hummingbird Printed Sweater|XL  |2       |
+    |Hummingbird Printed Sweater|M   |2       |
+#    |Hummingbird Printed Sweater|S   |3       |
+#    |Hummingbird Printed Sweater|L   |6       |
+#    |Hummingbird Printed Sweater|XL  |2       |

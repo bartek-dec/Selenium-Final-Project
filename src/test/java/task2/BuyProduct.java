@@ -8,7 +8,6 @@ import dataProvider.ConfigFileReader;
 import org.junit.Assert;
 import org.openqa.selenium.InvalidArgumentException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import pages.*;
 import webDriverProvider.WebDriverManager;
 
