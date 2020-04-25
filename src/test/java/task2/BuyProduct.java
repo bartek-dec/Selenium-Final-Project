@@ -4,19 +4,13 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import dataProvider.ConfigFileReader;
 import org.junit.Assert;
 import org.openqa.selenium.InvalidArgumentException;
-import org.openqa.selenium.WebDriver;
 import pages.*;
-import webDriverProvider.WebDriverManager;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
-public class BuyProduct {
-
-    private WebDriver driver;
+public class BuyProduct extends BaseClass {
 
     private LoginPage loginPage;
     private AccountPage accountPage;
@@ -27,21 +21,10 @@ public class BuyProduct {
     private OrderSummaryPage orderSummaryPage;
     private OrderConfirmationPage orderConfirmationPage;
     private OrderHistoryPage orderHistoryPage;
-    private ConfigFileReader configFileReader;
-    private WebDriverManager webDriverManager;
 
     @Given("user logged in to account")
     public void logInToAccount() {
-        webDriverManager = new WebDriverManager();
-        configFileReader = new ConfigFileReader();
-
-        System.setProperty(configFileReader.getSysPropertyName(),
-                configFileReader.getSysPropertyValue());
-
-        driver = webDriverManager.getDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(configFileReader.getImplicitlyWait(), TimeUnit.SECONDS);
-        driver.get(configFileReader.getUrl());
+        setUp();
 
         loginPage = new LoginPage(driver);
         loginPage.enterCredentials();
