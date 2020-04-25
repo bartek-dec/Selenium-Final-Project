@@ -40,6 +40,7 @@ public class ProductPage {
 
     public void selectSize(String size) {
         new Select(sizeSelector).selectByVisibleText(size);
+        wait.until(ExpectedConditions.refreshed(ExpectedConditions.urlContains("size-" + size.toLowerCase())));
     }
 
     public void provideQuantity(String quantity) {
