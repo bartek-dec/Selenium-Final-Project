@@ -60,8 +60,8 @@ public class ConfigFileReader {
         }
     }
 
-    public String getUrl() {
-        String url = properties.getProperty("url");
+    public String getLogInUrl() {
+        String url = properties.getProperty("logInUrl");
 
         if (url != null) {
             return url;

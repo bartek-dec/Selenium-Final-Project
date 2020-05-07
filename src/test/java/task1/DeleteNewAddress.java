@@ -17,6 +17,7 @@ public class DeleteNewAddress extends BaseClass {
     @Given("user logged in to account having first address already defined")
     public void logInToAccount() {
         setUp();
+        goToLogIn();
 
         loginPage = new LoginPage(driver);
         loginPage.enterCredentials();

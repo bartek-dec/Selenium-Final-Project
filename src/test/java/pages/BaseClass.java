@@ -23,6 +23,9 @@ public class BaseClass {
         driver = webDriverManager.getDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(configFileReader.getImplicitlyWait(), TimeUnit.SECONDS);
-        driver.get(configFileReader.getUrl());
+    }
+
+    public void goToLogIn() {
+        driver.get(configFileReader.getLogInUrl());
     }
 }
