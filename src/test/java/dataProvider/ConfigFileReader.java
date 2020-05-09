@@ -70,6 +70,16 @@ public class ConfigFileReader {
         }
     }
 
+    public String getMainUrl() {
+        String main = properties.getProperty("mainUrl");
+
+        if (main != null) {
+            return main;
+        } else {
+            throw new RuntimeException("url not specified in the configuration.properties file");
+        }
+    }
+
     public String getBrowser() {
         String browser = properties.getProperty("browser");
 

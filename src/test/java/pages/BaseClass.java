@@ -28,4 +28,8 @@ public class BaseClass {
     public void goToLogIn() {
         driver.get(configFileReader.getLogInUrl());
     }
+
+    public void goToMain() {
+        driver.get(configFileReader.getMainUrl());
+    }
 }
